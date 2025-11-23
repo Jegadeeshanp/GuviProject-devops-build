@@ -36,12 +36,6 @@ pipeline {
     }
 
     stage('Deploy to App Server') {
-      when {
-        anyOf {
-          branch 'dev'
-          branch 'main'
-        }
-      }
       steps {
         script {
           def image = readFile('imagename.txt').trim()
@@ -59,8 +53,8 @@ pipeline {
         }
       }
     }
-  }   // ← closes stages
-          
+  }
+
   post {
     success {
       echo "Pipeline completed successfully."
