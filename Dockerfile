@@ -1,14 +1,20 @@
-# Use Nginx to serve the static React build
+# Stage 1: Build React App
+FROM node:18-alpine AS builder
+WORKDIR /app
+
+COPY package*.json ./
+COPY . .
+
+RUN npm install --legacy-peer-deps
+RUN npm run build
+
+# Stage 2: Serve with Nginx
 FROM nginx:stable-alpine
 
-# Remove default config
-RUN rm /etc/nginx/conf.d/default.conf
+RUN rm -rf /usr/share/nginx/html/*
 
-# Copy your custom Nginx config
+COPY --from=builder /app/build /usr/share/nginx/html/
 COPY nginx.conf /etc/nginx/conf.d/default.conf
-
-# Copy pre-built React static files from the build folder
-COPY build/ /usr/share/nginx/html/
 
 EXPOSE 80
 
