@@ -9,14 +9,6 @@ pipeline {
     IMAGE_NAME = 'dev-app'                   // Your Docker image name
   }
 
-  stages {
-
-    stage('Checkout') {
-      steps {
-        checkout scm
-      }
-    }
-
     stage('Build & Push Docker Image') {
       steps {
         script {
