@@ -1,19 +1,8 @@
-# Stage 1: Build React App
-FROM node:18-alpine AS builder
-WORKDIR /app
-
-COPY package*.json ./
-COPY . .
-
-RUN npm install --legacy-peer-deps
-RUN npm run build
-
-# Stage 2: Serve with Nginx
 FROM nginx:stable-alpine
 
 RUN rm -rf /usr/share/nginx/html/*
 
-COPY --from=builder /app/build /usr/share/nginx/html/
+COPY build/ /usr/share/nginx/html/
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 80
