@@ -1,10 +1,6 @@
 #!/usr/bin/env bash
 # build.sh - build react app, build docker image, tag and push to Docker Hub
-# Usage:
-#   ./build.sh [tag]
-# Examples:
-#   ./build.sh latest
-#   ./build.sh dev-abc123
+
 set -euo pipefail
 
 REPO="jegadeeshanjeggy"
