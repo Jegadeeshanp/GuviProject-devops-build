@@ -1,0 +1,448 @@
+Started by GitHub push by Jegadeeshanp
+Lightweight checkout support not available, falling back to full checkout.
+Checking out git https://github.com/Jegadeeshanp/GuviProject-devops-build into /var/lib/jenkins/workspace/GuviProject3-devOps-build@script/91ab29877a090ffe7b42033e50bf520320efcf76089a5685afcb0dc3d0651149 to read Jenkinsfile
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+using credential github-token
+ > git rev-parse --resolve-git-dir /var/lib/jenkins/workspace/GuviProject3-devOps-build@script/91ab29877a090ffe7b42033e50bf520320efcf76089a5685afcb0dc3d0651149/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/Jegadeeshanp/GuviProject-devops-build # timeout=10
+Fetching upstream changes from https://github.com/Jegadeeshanp/GuviProject-devops-build
+ > git --version # timeout=10
+ > git --version # 'git version 2.43.0'
+using GIT_ASKPASS to set credentials GitHub PAT for Jenkins
+ > git fetch --tags --force --progress -- https://github.com/Jegadeeshanp/GuviProject-devops-build +refs/heads/*:refs/remotes/origin/* # timeout=10
+Seen branch in repository origin/dev
+Seen branch in repository origin/main
+Seen 2 remote branches
+ > git show-ref --tags -d # timeout=10
+Checking out Revision 66f061ded0d3a9b3019ad26fb4e5c014ff85938b (origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 66f061ded0d3a9b3019ad26fb4e5c014ff85938b # timeout=10
+Commit message: "Remove accidental file"
+ > git rev-list --no-walk 79d4a1ea353b477f3707f3a2d7e6658e55c732a7 # timeout=10
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/GuviProject3-devOps-build
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+using credential github-token
+ > git rev-parse --resolve-git-dir /var/lib/jenkins/workspace/GuviProject3-devOps-build/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/Jegadeeshanp/GuviProject-devops-build # timeout=10
+Fetching upstream changes from https://github.com/Jegadeeshanp/GuviProject-devops-build
+ > git --version # timeout=10
+ > git --version # 'git version 2.43.0'
+using GIT_ASKPASS to set credentials GitHub PAT for Jenkins
+ > git fetch --tags --force --progress -- https://github.com/Jegadeeshanp/GuviProject-devops-build +refs/heads/*:refs/remotes/origin/* # timeout=10
+Seen branch in repository origin/dev
+Seen branch in repository origin/main
+Seen 2 remote branches
+ > git show-ref --tags -d # timeout=10
+Checking out Revision 66f061ded0d3a9b3019ad26fb4e5c014ff85938b (origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 66f061ded0d3a9b3019ad26fb4e5c014ff85938b # timeout=10
+Commit message: "Remove accidental file"
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Build & Push Docker Image)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] sh
++ git rev-parse --short HEAD
+[Pipeline] sh
++ docker build -t jegadeeshanjeggy/dev-app:prod-66f061d -t jegadeeshanjeggy/dev-app:prod .
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 231B done
+#1 DONE 0.0s
+
+#2 [auth] library/nginx:pull token for registry-1.docker.io
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/nginx:stable-alpine
+#3 DONE 0.8s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 114B done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 867B done
+#5 DONE 0.0s
+
+#6 [1/4] FROM docker.io/library/nginx:stable-alpine@sha256:30f1c0d78e0ad60901648be663a710bdadf19e4c10ac6782c235200619158284
+#6 resolve docker.io/library/nginx:stable-alpine@sha256:30f1c0d78e0ad60901648be663a710bdadf19e4c10ac6782c235200619158284 0.0s done
+#6 DONE 0.0s
+
+#7 [2/4] RUN rm -rf /usr/share/nginx/html/*
+#7 CACHED
+
+#8 [3/4] COPY build/ /usr/share/nginx/html/
+#8 CACHED
+
+#9 [4/4] COPY nginx.conf /etc/nginx/conf.d/default.conf
+#9 CACHED
+
+#10 exporting to image
+#10 exporting layers done
+#10 exporting manifest sha256:6525d6be0355767c07931ce4ab2344717b7924c2d70e239a932284e63872b900 done
+#10 exporting config sha256:76789737db0f3b6c1b6918fe01280c7be4cea026a5e9e051bff76661bdca74d3 done
+#10 exporting attestation manifest sha256:dac5ee879ac9cf5091fb3548d4a1828beff073f6ee14541099e534423882222e 0.0s done
+#10 exporting manifest list sha256:bd9aeb0e57630f18b61589c3a8164ed1e46c1391a9249ee0393897cd3bd36204
+#10 exporting manifest list sha256:bd9aeb0e57630f18b61589c3a8164ed1e46c1391a9249ee0393897cd3bd36204 0.0s done
+#10 naming to docker.io/jegadeeshanjeggy/dev-app:prod-66f061d done
+#10 unpacking to docker.io/jegadeeshanjeggy/dev-app:prod-66f061d 0.0s done
+#10 naming to docker.io/jegadeeshanjeggy/dev-app:prod done
+#10 unpacking to docker.io/jegadeeshanjeggy/dev-app:prod 0.0s done
+#10 DONE 0.2s
+[Pipeline] withCredentials
+Masking supported pattern matches of $DH_PASS
+[Pipeline] {
+[Pipeline] sh
+Warning: A secret was passed to "sh" using Groovy String interpolation, which is insecure.
+		 Affected argument(s) used the following variable(s): [DH_PASS]
+		 See https://jenkins.io/redirect/groovy-string-interpolation for details.
++ echo ****
++ docker login --username jegadeeshanjeggy --password-stdin
+Login Succeeded
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] sh
++ docker push jegadeeshanjeggy/dev-app:prod-66f061d
+The push refers to repository [docker.io/jegadeeshanjeggy/dev-app]
+fba18bc393ef: Waiting
+d001c1fa4769: Waiting
+8e049f0fd151: Waiting
+71a39d0d04b2: Waiting
+e6918dcfd20d: Waiting
+c4fca37af7b3: Waiting
+3e300a7cb18c: Waiting
+f637881d1138: Waiting
+b8554c5f1ad0: Waiting
+bc1d7488b05e: Waiting
+5a5c34c7c321: Waiting
+111cf02bd545: Waiting
+71a39d0d04b2: Waiting
+e6918dcfd20d: Waiting
+c4fca37af7b3: Waiting
+3e300a7cb18c: Waiting
+f637881d1138: Waiting
+b8554c5f1ad0: Waiting
+bc1d7488b05e: Waiting
+5a5c34c7c321: Waiting
+111cf02bd545: Waiting
+fba18bc393ef: Waiting
+d001c1fa4769: Waiting
+8e049f0fd151: Waiting
+c4fca37af7b3: Waiting
+3e300a7cb18c: Waiting
+f637881d1138: Waiting
+b8554c5f1ad0: Waiting
+bc1d7488b05e: Waiting
+5a5c34c7c321: Waiting
+111cf02bd545: Waiting
+fba18bc393ef: Waiting
+d001c1fa4769: Waiting
+8e049f0fd151: Waiting
+71a39d0d04b2: Waiting
+e6918dcfd20d: Waiting
+fba18bc393ef: Waiting
+d001c1fa4769: Waiting
+8e049f0fd151: Waiting
+71a39d0d04b2: Waiting
+e6918dcfd20d: Waiting
+c4fca37af7b3: Waiting
+3e300a7cb18c: Waiting
+f637881d1138: Waiting
+b8554c5f1ad0: Waiting
+bc1d7488b05e: Waiting
+5a5c34c7c321: Waiting
+111cf02bd545: Waiting
+fba18bc393ef: Waiting
+d001c1fa4769: Waiting
+8e049f0fd151: Waiting
+71a39d0d04b2: Waiting
+e6918dcfd20d: Waiting
+c4fca37af7b3: Waiting
+3e300a7cb18c: Waiting
+f637881d1138: Waiting
+b8554c5f1ad0: Waiting
+bc1d7488b05e: Waiting
+5a5c34c7c321: Waiting
+111cf02bd545: Waiting
+b8554c5f1ad0: Waiting
+bc1d7488b05e: Waiting
+5a5c34c7c321: Waiting
+111cf02bd545: Waiting
+fba18bc393ef: Waiting
+d001c1fa4769: Waiting
+8e049f0fd151: Waiting
+71a39d0d04b2: Waiting
+e6918dcfd20d: Waiting
+c4fca37af7b3: Waiting
+3e300a7cb18c: Waiting
+f637881d1138: Waiting
+f637881d1138: Waiting
+b8554c5f1ad0: Waiting
+bc1d7488b05e: Waiting
+5a5c34c7c321: Waiting
+111cf02bd545: Waiting
+fba18bc393ef: Waiting
+d001c1fa4769: Waiting
+8e049f0fd151: Waiting
+71a39d0d04b2: Waiting
+e6918dcfd20d: Waiting
+c4fca37af7b3: Waiting
+3e300a7cb18c: Waiting
+3e300a7cb18c: Waiting
+f637881d1138: Waiting
+b8554c5f1ad0: Waiting
+bc1d7488b05e: Waiting
+5a5c34c7c321: Waiting
+111cf02bd545: Waiting
+fba18bc393ef: Waiting
+d001c1fa4769: Waiting
+8e049f0fd151: Waiting
+71a39d0d04b2: Waiting
+e6918dcfd20d: Waiting
+c4fca37af7b3: Waiting
+e6918dcfd20d: Waiting
+c4fca37af7b3: Waiting
+3e300a7cb18c: Waiting
+f637881d1138: Waiting
+b8554c5f1ad0: Waiting
+bc1d7488b05e: Waiting
+5a5c34c7c321: Waiting
+111cf02bd545: Waiting
+fba18bc393ef: Waiting
+d001c1fa4769: Waiting
+8e049f0fd151: Waiting
+71a39d0d04b2: Waiting
+5a5c34c7c321: Waiting
+111cf02bd545: Waiting
+fba18bc393ef: Waiting
+d001c1fa4769: Waiting
+8e049f0fd151: Waiting
+71a39d0d04b2: Waiting
+e6918dcfd20d: Waiting
+c4fca37af7b3: Waiting
+3e300a7cb18c: Waiting
+f637881d1138: Waiting
+b8554c5f1ad0: Layer already exists
+bc1d7488b05e: Waiting
+fba18bc393ef: Waiting
+d001c1fa4769: Layer already exists
+8e049f0fd151: Layer already exists
+71a39d0d04b2: Layer already exists
+e6918dcfd20d: Layer already exists
+c4fca37af7b3: Layer already exists
+3e300a7cb18c: Layer already exists
+f637881d1138: Layer already exists
+bc1d7488b05e: Layer already exists
+5a5c34c7c321: Layer already exists
+111cf02bd545: Layer already exists
+fba18bc393ef: Pushed
+prod-66f061d: digest: sha256:bd9aeb0e57630f18b61589c3a8164ed1e46c1391a9249ee0393897cd3bd36204 size: 856
+[Pipeline] sh
++ docker push jegadeeshanjeggy/dev-app:prod
+The push refers to repository [docker.io/jegadeeshanjeggy/dev-app]
+111cf02bd545: Waiting
+f637881d1138: Waiting
+b8554c5f1ad0: Waiting
+8e049f0fd151: Waiting
+d001c1fa4769: Waiting
+e6918dcfd20d: Waiting
+c4fca37af7b3: Waiting
+bc1d7488b05e: Waiting
+5a5c34c7c321: Waiting
+71a39d0d04b2: Waiting
+fba18bc393ef: Waiting
+3e300a7cb18c: Waiting
+fba18bc393ef: Waiting
+3e300a7cb18c: Waiting
+111cf02bd545: Waiting
+f637881d1138: Waiting
+b8554c5f1ad0: Waiting
+8e049f0fd151: Waiting
+d001c1fa4769: Waiting
+e6918dcfd20d: Waiting
+c4fca37af7b3: Waiting
+bc1d7488b05e: Waiting
+5a5c34c7c321: Waiting
+71a39d0d04b2: Waiting
+c4fca37af7b3: Waiting
+bc1d7488b05e: Waiting
+5a5c34c7c321: Waiting
+71a39d0d04b2: Waiting
+fba18bc393ef: Waiting
+3e300a7cb18c: Waiting
+111cf02bd545: Waiting
+f637881d1138: Waiting
+b8554c5f1ad0: Waiting
+8e049f0fd151: Waiting
+d001c1fa4769: Waiting
+e6918dcfd20d: Waiting
+71a39d0d04b2: Waiting
+fba18bc393ef: Waiting
+3e300a7cb18c: Waiting
+111cf02bd545: Waiting
+f637881d1138: Waiting
+b8554c5f1ad0: Waiting
+8e049f0fd151: Waiting
+d001c1fa4769: Waiting
+e6918dcfd20d: Waiting
+c4fca37af7b3: Waiting
+bc1d7488b05e: Waiting
+5a5c34c7c321: Waiting
+d001c1fa4769: Waiting
+e6918dcfd20d: Waiting
+c4fca37af7b3: Waiting
+bc1d7488b05e: Waiting
+5a5c34c7c321: Waiting
+71a39d0d04b2: Waiting
+fba18bc393ef: Waiting
+3e300a7cb18c: Waiting
+111cf02bd545: Waiting
+f637881d1138: Waiting
+b8554c5f1ad0: Waiting
+8e049f0fd151: Waiting
+bc1d7488b05e: Waiting
+5a5c34c7c321: Waiting
+71a39d0d04b2: Waiting
+fba18bc393ef: Already exists
+3e300a7cb18c: Waiting
+111cf02bd545: Waiting
+f637881d1138: Waiting
+b8554c5f1ad0: Waiting
+8e049f0fd151: Waiting
+d001c1fa4769: Waiting
+e6918dcfd20d: Waiting
+c4fca37af7b3: Waiting
+5a5c34c7c321: Waiting
+71a39d0d04b2: Waiting
+3e300a7cb18c: Waiting
+111cf02bd545: Waiting
+f637881d1138: Waiting
+b8554c5f1ad0: Waiting
+8e049f0fd151: Waiting
+d001c1fa4769: Waiting
+e6918dcfd20d: Waiting
+c4fca37af7b3: Waiting
+bc1d7488b05e: Waiting
+111cf02bd545: Waiting
+f637881d1138: Waiting
+b8554c5f1ad0: Waiting
+8e049f0fd151: Layer already exists
+d001c1fa4769: Waiting
+e6918dcfd20d: Waiting
+c4fca37af7b3: Waiting
+bc1d7488b05e: Waiting
+5a5c34c7c321: Waiting
+71a39d0d04b2: Waiting
+3e300a7cb18c: Waiting
+111cf02bd545: Layer already exists
+f637881d1138: Layer already exists
+b8554c5f1ad0: Layer already exists
+d001c1fa4769: Layer already exists
+e6918dcfd20d: Layer already exists
+c4fca37af7b3: Layer already exists
+bc1d7488b05e: Layer already exists
+5a5c34c7c321: Layer already exists
+71a39d0d04b2: Layer already exists
+3e300a7cb18c: Layer already exists
+prod: digest: sha256:bd9aeb0e57630f18b61589c3a8164ed1e46c1391a9249ee0393897cd3bd36204 size: 856
+[Pipeline] writeFile
+[Pipeline] archiveArtifacts
+Archiving artifacts
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Deploy to App Server)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] readFile
+[Pipeline] sshagent
+[ssh-agent] Using credentials ubuntu (ssh-app-server)
+$ ssh-agent
+SSH_AUTH_SOCK=/tmp/ssh-ScrhGEW3Mhhw/agent.33898
+SSH_AGENT_PID=33901
+Running ssh-add (command line suppressed)
+Identity added: /var/lib/jenkins/workspace/GuviProject3-devOps-build@tmp/private_key_3746499718647328220.key (jenkins-deploy)
+[ssh-agent] Started.
+[Pipeline] {
+[Pipeline] sh
++ ssh -o StrictHostKeyChecking=no ubuntu@13.60.220.253
+Pseudo-terminal will not be allocated because stdin is not a terminal.
+Welcome to Ubuntu 24.04.3 LTS (GNU/Linux 6.14.0-1015-aws x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Sun Nov 23 17:41:48 UTC 2025
+
+  System load:  0.0                Temperature:           -273.1 C
+  Usage of /:   16.7% of 18.33GB   Processes:             125
+  Memory usage: 22%                Users logged in:       1
+  Swap usage:   0%                 IPv4 address for ens5: 172.31.26.121
+
+ * Ubuntu Pro delivers the most comprehensive open source security and
+   compliance features.
+
+   https://ubuntu.com/aws/pro
+
+Expanded Security Maintenance for Applications is not enabled.
+
+0 updates can be applied immediately.
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+
+*** System restart required ***
+prod-66f061d: Pulling from jegadeeshanjeggy/dev-app
+Digest: sha256:bd9aeb0e57630f18b61589c3a8164ed1e46c1391a9249ee0393897cd3bd36204
+Status: Downloaded newer image for jegadeeshanjeggy/dev-app:prod-66f061d
+docker.io/jegadeeshanjeggy/dev-app:prod-66f061d
+ Container production-app  Recreate
+ Container production-app  Recreated
+ Container production-app  Starting
+ Container production-app  Started
+[Pipeline] }
+$ ssh-agent -k
+unset SSH_AUTH_SOCK;
+unset SSH_AGENT_PID;
+echo Agent pid 33901 killed;
+[ssh-agent] Stopped.
+[Pipeline] // sshagent
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] echo
+Pipeline completed successfully.
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
