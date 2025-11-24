@@ -1,10 +1,6 @@
 #!/usr/bin/env bash
 # deploy.sh - pull image from Docker Hub and bring up docker-compose
-# Usage:
-#   ./deploy.sh [image-tag-or-full-image]
-# Examples:
-#   ./deploy.sh latest
-#   ./deploy.sh jegadeeshanjeggy/dev-app:dev-abc123
+
 set -euo pipefail
 
 # Directory where docker-compose.yml lives on the app server
